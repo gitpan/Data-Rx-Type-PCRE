@@ -1,0 +1,11 @@
+--- 
+abstract: PCRE string checking for Rx (experimental)
+author: 
+  - Ricardo SIGNES <rjbs@cpan.org>
+generated_by: Dist::Zilla::Plugin::MetaYaml version 0.005
+license: perl
+name: Data-Rx-Type-PCRE
+requires: 
+  Data::Rx: 0.004
+  re::engine::PCRE: 0.15
+version: 0.001
