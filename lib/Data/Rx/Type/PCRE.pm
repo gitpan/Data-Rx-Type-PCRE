@@ -2,12 +2,11 @@ use strict;
 use warnings;
 use 5.010;
 package Data::Rx::Type::PCRE;
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 # ABSTRACT: PCRE string checking for Rx (experimental)
 
 use Carp ();
-use Moose::Util::TypeConstraints ();
 
 
 sub type_uri { 'tag:rjbs.manxome.org,2008-10-04:rx/pcre/str' }
@@ -43,35 +42,27 @@ sub check {
 1;
 
 __END__
-
-=pod
-
 =head1 NAME
 
 Data::Rx::Type::PCRE - PCRE string checking for Rx (experimental)
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
-    use Data::Rx;
-    use Data::Rx::Type::PCRE;
+  use Data::Rx;
+  use Data::Rx::Type::PCRE;
 
-    my $rx = Data::Rx->new({
-      type_plugins => [ 'Data::Rx::Type::PCRE' ]
-    });
+  my $rx = Data::Rx->new({
+    type_plugins => [ 'Data::Rx::Type::PCRE' ]
+  });
 
-    my $ph_number = $rx->make_schema({
-      type  => 'tag:rjbs.manxome.org,2008-10-04:rx/pcre/str',
-      regex => q/\A867-[5309]{4}\z/,
-    });
-
-=head1 WARNING
-
-This plugin is still pretty experimental.  When it's less so, it may get a new
-type URI.  Its interface may change between now and then.
+  my $ph_number = $rx->make_schema({
+    type  => 'tag:rjbs.manxome.org,2008-10-04:rx/pcre/str',
+    regex => q/\A867-[5309]{4}\z/,
+  });
 
 =head1 DESCRIPTION
 
@@ -96,6 +87,8 @@ This software is copyright (c) 2008 by Ricardo SIGNES.
 This is free software; you can redistribute it and/or modify it under
 the same terms as perl itself.
 
-=cut 
+=head1 WARNING
 
+This plugin is still pretty experimental.  When it's less so, it may get a new
+type URI.  Its interface may change between now and then.
 
