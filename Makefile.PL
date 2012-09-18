@@ -2,18 +2,61 @@
 use strict;
 use warnings;
 
-use ExtUtils::MakeMaker;
+use 5.010;
 
-WriteMakefile(
-  DISTNAME  => 'Data-Rx-Type-PCRE',
-  NAME      => 'Data::Rx::Type::PCRE',
-  AUTHOR    => 'Ricardo\ SIGNES\ \<rjbs\@cpan\.org\>',
-  ABSTRACT  => 'PCRE string checking for Rx (experimental)',
-  VERSION   => '0.002',
-  EXE_FILES => [ qw() ],
-  (eval { ExtUtils::MakeMaker->VERSION(6.21) } ? (LICENSE => 'perl') : ()),
-  PREREQ_PM    => {
-    "Data::Rx" => '0.004',
-    "re::engine::PCRE" => '0.15',
+use ExtUtils::MakeMaker 6.30;
+
+
+
+my %WriteMakefileArgs = (
+  "ABSTRACT" => "PCRE string checking for Rx (experimental)",
+  "AUTHOR" => "Ricardo SIGNES <rjbs\@cpan.org>",
+  "BUILD_REQUIRES" => {
+    "Data::Rx" => 0,
+    "File::Find" => 0,
+    "File::Temp" => 0,
+    "Test::More" => "0.96"
   },
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
+  },
+  "DISTNAME" => "Data-Rx-Type-PCRE",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Data::Rx::Type::PCRE",
+  "PREREQ_PM" => {
+    "Carp" => 0,
+    "Data::Rx" => "0.004",
+    "Data::Rx::CommonType::EasyNew" => 0,
+    "parent" => 0,
+    "re::engine::PCRE" => "0.15",
+    "strict" => 0,
+    "warnings" => 0
+  },
+  "VERSION" => "0.003",
+  "test" => {
+    "TESTS" => "t/*.t"
+  }
 );
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+
