@@ -3,7 +3,7 @@ use warnings;
 use 5.010;
 package Data::Rx::Type::PCRE;
 {
-  $Data::Rx::Type::PCRE::VERSION = '0.003';
+  $Data::Rx::Type::PCRE::VERSION = '0.004';
 }
 use parent 'Data::Rx::CommonType::EasyNew';
 
@@ -54,6 +54,7 @@ sub assert_valid {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -62,7 +63,7 @@ Data::Rx::Type::PCRE - PCRE string checking for Rx (experimental)
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 
@@ -101,10 +102,9 @@ Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Ricardo SIGNES.
+This software is copyright (c) 2013 by Ricardo SIGNES.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
