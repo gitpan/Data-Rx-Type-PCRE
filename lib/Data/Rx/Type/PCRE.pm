@@ -3,7 +3,7 @@ use warnings;
 use 5.010;
 package Data::Rx::Type::PCRE;
 {
-  $Data::Rx::Type::PCRE::VERSION = '0.004';
+  $Data::Rx::Type::PCRE::VERSION = '0.005';
 }
 use parent 'Data::Rx::CommonType::EasyNew';
 
@@ -57,13 +57,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 Data::Rx::Type::PCRE - PCRE string checking for Rx (experimental)
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
